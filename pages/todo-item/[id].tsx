@@ -3,11 +3,9 @@ import Link from "next/link";
 import { useAppCtx } from "../../context/Tasks";
 import { useRouter } from "next/router";
 
-type Props = {};
+// `pages/todo-item/[id].tsx` will handle `todo-item/1`, `todo-item/2`, etc.
 
-// `pages/posts/[id].tsx` will handle `posts/1`, `posts/2`, etc.
-
-export default function Item({}: Props) {
+export default function Item() {
 	const router = useRouter();
 	const { id } = router.query;
 	const tasksContext = useAppCtx();

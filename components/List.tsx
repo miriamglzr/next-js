@@ -1,19 +1,23 @@
 import React from "react";
 import Link from "next/link";
 import { useAppCtx } from "../context/Tasks";
+import { Task } from "../context/Tasks";
 
-type Props = {};
-
-function List({}: Props) {
+function List({
+	taskIds,
+}: {
+	taskIds?: Task[];
+	setTasks?: (tasks: Task[]) => void;
+}) {
 	const tasksContext = useAppCtx();
-	// const { tasks } = tasksContext // cannot deconstruct
-	console.log(tasksContext?.tasks);
+
+	console.log(taskIds);
 	return (
 		<ul>
 			{tasksContext?.tasks.map((task, i) => {
 				return (
-					<li>
-						<Link href={`/todo-item/${task.id}`} key={i + task.name}>
+					<li key={i + task.name}>
+						<Link href={`/todo-item/${task.id}`}>
 							<a>{task.name}</a>
 						</Link>
 					</li>
