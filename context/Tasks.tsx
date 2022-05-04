@@ -21,18 +21,20 @@ export const AppCtxProvider = ({ children }: { children: ReactNode }) => {
 		setTasks([...tasks, task]);
 
 		const url = `/api/tasks`;
-		await axios.post(url, task);
+		const data = await axios.post(url, task);
+		setTasks(data.data);
 	};
 
-	const fetcher = (url: string) => axios.get(url);
+	const fetcher = async (url: string) => await axios.get(url);
 
 	const url = `/api/tasks`;
 
 	const { data } = useSWR(url, fetcher);
 	console.log(data?.data);
+	// setTasks(data?.data);
 
 	return (
-		<AppCtx.Provider value={{ tasks, onTaskCreated }}>
+		<AppCtx.Provider value={{ tasks: tasks ?? data?.data, onTaskCreated }}>
 			{children}
 		</AppCtx.Provider>
 	);

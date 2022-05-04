@@ -6,7 +6,7 @@ declare global {
 	var items: Task[];
 }
 
-globalThis.items = [{ id: 1, name: "Do homework" }];
+globalThis.items = [];
 
 
 export default function handler(
