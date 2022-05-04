@@ -1,17 +1,10 @@
 import React from "react";
 import Link from "next/link";
 import { useAppCtx } from "../context/Tasks";
-import { Task } from "../context/Tasks";
 
-function List({
-	taskIds,
-}: {
-	taskIds?: Task[];
-	setTasks?: (tasks: Task[]) => void;
-}) {
+function List() {
 	const tasksContext = useAppCtx();
 
-	console.log(taskIds);
 	return (
 		<ul>
 			{tasksContext?.tasks.map((task, i) => {
